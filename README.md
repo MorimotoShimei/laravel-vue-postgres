@@ -3,6 +3,11 @@
 
 [元ネタ](https://qiita.com/MasahiroHarada/items/2597bd6973a45f92e1e8)
 
+## 変更点
+
+- Laravel 7向けに修正
+- ファイルの格納先をローカルディスクに変更
+
 ## 実行
 
 envをコピー
@@ -41,13 +46,6 @@ php artisan migrate
 # コンテナ内で実行
 php artisan serve --host 0.0.0.0 --port 8081
 ```
-
-## データを掃除
-
-下記フォルダ内を削除する
-> database/
->
-> web/storage/app/
 
 ## 素から構築する(参考に残しておく)
 
