@@ -1,0 +1,30 @@
+version: '3'
+services:
+  vuesplash_web:
+    build: .
+    container_name: vuesplash_web
+    image: web
+    volumes:
+      - ./web:/var/www/html/vuesplash:cached
+    ports:
+      - 8081:8081
+      - 3000:3000
+  vuesplash_database:
+    container_name: vuesplash_database
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - ./database:/var/lib/postgresql/data:cached
+    ports:
+      - 5434:5432
+  phppgadmin:
+    container_name: phppgadmin
+    image: dockage/phppgadmin:latest
+    environment: 
+      - PHP_PG_ADMIN_SERVER_HOST=vuesplash_database
+      - PHP_PG_ADMIN_SERVER_PORT=5432
+      - PHP_PG_ADMIN_SERVER_SSL_MODE=disable
+    ports:
+      - 8888:80
